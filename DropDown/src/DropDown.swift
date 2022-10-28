@@ -20,7 +20,7 @@ private typealias ComputeLayoutTuple = (x: CGFloat, y: CGFloat, width: CGFloat, 
 
 /// Can be `UIView` or `UIBarButtonItem`.
 @objc
-public protocol AnchorView: class {
+public protocol AnchorView: AnyObject {
 
 	var plainView: UIView { get }
 
@@ -113,7 +113,7 @@ public final class DropDown: UIView {
 
 	See `Direction` enum for more info.
 	*/
-	@objc public var direction = Direction.any
+	public var direction = Direction.any
 
 	/**
 	The offset point relative to `anchorView` when the drop down is shown above the anchor view.
@@ -150,7 +150,7 @@ public final class DropDown: UIView {
 
 	Defaults to `anchorView.bounds.width - offset.x`.
 	*/
-	@objc public var width: CGFloat? {
+	public var width: CGFloat? {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -159,7 +159,7 @@ public final class DropDown: UIView {
 
 	arrowIndication will be add to tableViewContainer when configured
 	*/
-	@objc public var arrowIndicationX: CGFloat? {
+	public var arrowIndicationX: CGFloat? {
 		didSet {
 			if let arrowIndicationX = arrowIndicationX {
 				tableViewContainer.addSubview(arrowIndication)
