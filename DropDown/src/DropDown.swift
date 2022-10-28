@@ -104,7 +104,7 @@ public final class DropDown: UIView {
 
 
 	/// The view to which the drop down will displayed onto.
-	public weak var anchorView: AnchorView? {
+	@objc public weak var anchorView: AnchorView? {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -113,7 +113,7 @@ public final class DropDown: UIView {
 
 	See `Direction` enum for more info.
 	*/
-	public var direction = Direction.any
+	@objc public var direction = Direction.any
 
 	/**
 	The offset point relative to `anchorView` when the drop down is shown above the anchor view.
@@ -122,7 +122,7 @@ public final class DropDown: UIView {
 	left corner for its origin, so an offset equal to (0, 0).
 	You can change here the default drop down origin.
 	*/
-	public var topOffset: CGPoint = .zero {
+	@objc public var topOffset: CGPoint = .zero {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -133,7 +133,7 @@ public final class DropDown: UIView {
 	left corner for its origin, so an offset equal to (0, 0).
 	You can change here the default drop down origin.
 	*/
-	public var bottomOffset: CGPoint = .zero {
+	@objc public var bottomOffset: CGPoint = .zero {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -141,7 +141,7 @@ public final class DropDown: UIView {
     The offset from the bottom of the window when the drop down is shown below the anchor view.
     DropDown applies this offset only if keyboard is hidden.
     */
-    public var offsetFromWindowBottom = CGFloat(0) {
+    @objc public var offsetFromWindowBottom = CGFloat(0) {
         didSet { setNeedsUpdateConstraints() }
     }
     
@@ -150,7 +150,7 @@ public final class DropDown: UIView {
 
 	Defaults to `anchorView.bounds.width - offset.x`.
 	*/
-	public var width: CGFloat? {
+	@objc public var width: CGFloat? {
 		didSet { setNeedsUpdateConstraints() }
 	}
 
@@ -159,7 +159,7 @@ public final class DropDown: UIView {
 
 	arrowIndication will be add to tableViewContainer when configured
 	*/
-	public var arrowIndicationX: CGFloat? {
+	@objc public var arrowIndicationX: CGFloat? {
 		didSet {
 			if let arrowIndicationX = arrowIndicationX {
 				tableViewContainer.addSubview(arrowIndication)
@@ -190,7 +190,7 @@ public final class DropDown: UIView {
         }
 	}
 
-	public override var backgroundColor: UIColor? {
+	@objc public override var backgroundColor: UIColor? {
 		get { return tableViewBackgroundColor }
 		set { tableViewBackgroundColor = newValue! }
 	}
@@ -198,7 +198,7 @@ public final class DropDown: UIView {
 	/**
 	The color of the dimmed background (behind the drop down, covering the entire screen).
 	*/
-	public var dimmedBackgroundColor = UIColor.clear {
+	@objc public var dimmedBackgroundColor = UIColor.clear {
 		willSet { super.backgroundColor = newValue }
 	}
 
@@ -357,7 +357,7 @@ public final class DropDown: UIView {
      
      Changing the cell nib automatically reloads the drop down.
      */
-	public var cellNib = UINib(nibName: "DropDownCell", bundle: bundle) {
+	@objc public var cellNib = UINib(nibName: "DropDownCell", bundle: bundle) {
 		didSet {
 			tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 			templateCell = nil
@@ -381,7 +381,7 @@ public final class DropDown: UIView {
 
 	Changing the data source automatically reloads the drop down.
 	*/
-	public var dataSource = [String]() {
+	@objc public var dataSource = [String]() {
 		didSet {
             deselectRows(at: selectedRowIndices)
 			reloadAllComponents()
@@ -423,7 +423,7 @@ public final class DropDown: UIView {
     }
 
 	/// The action to execute when the user selects a cell.
-	public var selectionAction: SelectionClosure?
+	@objc public var selectionAction: SelectionClosure?
     
     /**
     The action to execute when the user selects multiple cells.
@@ -437,7 +437,7 @@ public final class DropDown: UIView {
 	public var willShowAction: Closure?
 
 	/// The action to execute when the user cancels/hides the drop down.
-	public var cancelAction: Closure?
+	@objc public var cancelAction: Closure?
 
 	/// The dismiss mode of the drop down. Default is `OnTap`.
 	public var dismissMode = DismissMode.onTap {
