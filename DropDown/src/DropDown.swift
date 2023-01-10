@@ -418,7 +418,7 @@ public final class DropDown: UIView {
      
      Changing `customCellConfiguration` automatically reloads the drop down.
      */
-    public var customCellConfiguration: CellConfigurationClosure? {
+    @objc public var customCellConfiguration: CellConfigurationClosure? {
         didSet { reloadAllComponents() }
     }
 
